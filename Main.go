@@ -26,12 +26,18 @@ func main() {
 				fmt.Println(tasks[j])
 			}
 		} else if i == 3 {
-			fmt.Println("Marking tast as complete\n")
+			var num int
+			fmt.Println("Which task would you like to remove?")
+			for j := 0; j < len(tasks); j++ {
+				fmt.Println(tasks[j])
+			}
+			fmt.Print("ID Number: ")
+			fmt.Scan(&num)
+			num -= 1
+			tasks = append(tasks[:num], tasks[num+1:]...)
 		} else if i == 4 {
-			fmt.Println("Deleting Tasks\n")
-		} else if i == 5 {
 			fmt.Println("Saving Tasks\n")
-		} else if i == 6 {
+		} else if i == 5 {
 			os.Exit(0)
 		} else {
 			fmt.Println("Invalid input try again\n")
@@ -42,7 +48,7 @@ func main() {
 func printChoices() int {
 	var num int
 	fmt.Println("What do you want to do?\n")
-	fmt.Println("1. Create Task \n2. List Tasks\n3. Mark Task as Complete\n4. Delete Task\n5. Save Tasks (Warning: Tasks will disappear without saving on close)\n6. Exit")
+	fmt.Println("1. Create Task \n2. List Tasks\n3. Remove Task\n4. Save Tasks (Warning: Tasks will disappear without saving on close)\n5. Exit")
 	fmt.Print("\nEnter choice: ")
 	fmt.Scan(&num)
 
