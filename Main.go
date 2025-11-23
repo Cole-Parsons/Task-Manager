@@ -13,20 +13,18 @@ type task struct {
 
 func main() {
 	var tasks []task
-	var testTask task
+	var newTask task
+	var counter int = 0
 	for {
 		i := printChoices()
 		if i == 1 {
-			fmt.Println("Creating task\n")
-			testTask = task{
-				name:    "laundry",
-				dueDate: "tomorrow",
-				ID:      1,
-			}
-			tasks = append(tasks, testTask)
+			counter++
+			newTask = createTask(counter)
+			tasks = append(tasks, newTask)
 		} else if i == 2 {
-			fmt.Println("Listing tasks\n")
-			fmt.Println(testTask)
+			for j := 0; j < len(tasks); j++ {
+				fmt.Println(tasks[j])
+			}
 		} else if i == 3 {
 			fmt.Println("Marking tast as complete\n")
 		} else if i == 4 {
@@ -49,4 +47,19 @@ func printChoices() int {
 	fmt.Scan(&num)
 
 	return num
+}
+
+func createTask(num int) task {
+	var name string
+	var dueDate string
+	fmt.Print("What is the name of the Task?\nEnter Name: ")
+	fmt.Scan(&name)
+	fmt.Print("\nWhen do you want the task to be done?\nEnter Date: ")
+	fmt.Scan(&dueDate)
+	newTask := task{
+		name:    name,
+		dueDate: dueDate,
+		ID:      num,
+	}
+	return newTask
 }
