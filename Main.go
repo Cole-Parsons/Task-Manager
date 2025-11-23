@@ -5,15 +5,28 @@ import (
 	"os"
 )
 
-func main() {
-	//var tasks[] string
+type task struct {
+	name    string
+	dueDate string
+	ID      int
+}
 
+func main() {
+	var tasks []task
+	var testTask task
 	for {
 		i := printChoices()
 		if i == 1 {
 			fmt.Println("Creating task\n")
+			testTask = task{
+				name:    "laundry",
+				dueDate: "tomorrow",
+				ID:      1,
+			}
+			tasks = append(tasks, testTask)
 		} else if i == 2 {
 			fmt.Println("Listing tasks\n")
+			fmt.Println(testTask)
 		} else if i == 3 {
 			fmt.Println("Marking tast as complete\n")
 		} else if i == 4 {
